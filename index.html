@@ -47,6 +47,15 @@
       100% { background-position:   0% 50%; }
     }
 
+    /* social proof marquee */
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-100%); }
+    }
+    .animate-marquee {
+      animation: marquee 30s linear infinite;
+    }
+
 
 
   </style>
@@ -85,19 +94,21 @@
   </section>
 
 
-  <section class="py-16 overflow-hidden">
-    <ul id="testimonial-carousel" class="flex animate-scroll space-x-8 whitespace-nowrap">
-      <li class="flex-shrink-0 w-80 italic text-gray-400">“Our bookings jumped 27% in the first month after launch. Customers tell us the site ‘just feels better’ than other local shops.” — Carla M.</li>
-      <li class="flex-shrink-0 w-80 italic text-gray-400">“I’d put off web stuff for years; they handled everything in three days and even fixed my domain mess. It loads lightning-fast on weak LTE.” — Ramon P.</li>
-      <li class="flex-shrink-0 w-80 italic text-gray-400">“Google picked us up within a week and we outrank the chains now. That monthly Care plan saves me hours.” — Janelle O.</li>
-      <li class="flex-shrink-0 w-80 italic text-gray-400">“We got compliments on the site before we even announced it. One client said it looked like we franchised overnight. Worth every penny.” — Kevin D.</li>
-      <li class="flex-shrink-0 w-80 italic text-gray-400">“Our bookings jumped 27% in the first month after launch. Customers tell us the site ‘just feels better’ than other local shops.” — Carla M.</li>
-      <li class="flex-shrink-0 w-80 italic text-gray-400">“I’d put off web stuff for years; they handled everything in three days and even fixed my domain mess. It loads lightning-fast on weak LTE.” — Ramon P.</li>
-      <li class="flex-shrink-0 w-80 italic text-gray-400">“Google picked us up within a week and we outrank the chains now. That monthly Care plan saves me hours.” — Janelle O.</li>
-      <li class="flex-shrink-0 w-80 italic text-gray-400">“We got compliments on the site before we even announced it. One client said it looked like we franchised overnight. Worth every penny.” — Kevin D.</li>
-    </ul>
-    <style>@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}</style>
-    <style>.animate-scroll{animation:scroll 25s linear infinite}</style>
+  <section id="social-proof" class="py-16 overflow-hidden bg-white/5">
+    <div class="relative flex">
+      <ul class="flex space-x-8 whitespace-nowrap animate-marquee">
+        <li class="flex-shrink-0 w-80 italic text-gray-400">“Our bookings jumped 27% in the first month after launch. Customers tell us the site ‘just feels better’ than other local shops.” — Carla M.</li>
+        <li class="flex-shrink-0 w-80 italic text-gray-400">“I’d put off web stuff for years; they handled everything in three days and even fixed my domain mess. It loads lightning-fast on weak LTE.” — Ramon P.</li>
+        <li class="flex-shrink-0 w-80 italic text-gray-400">“Google picked us up within a week and we outrank the chains now. That monthly Care plan saves me hours.” — Janelle O.</li>
+        <li class="flex-shrink-0 w-80 italic text-gray-400">“We got compliments on the site before we even announced it. One client said it looked like we franchised overnight. Worth every penny.” — Kevin D.</li>
+      </ul>
+      <ul class="flex space-x-8 whitespace-nowrap animate-marquee absolute left-full" aria-hidden="true">
+        <li class="flex-shrink-0 w-80 italic text-gray-400">“Our bookings jumped 27% in the first month after launch. Customers tell us the site ‘just feels better’ than other local shops.” — Carla M.</li>
+        <li class="flex-shrink-0 w-80 italic text-gray-400">“I’d put off web stuff for years; they handled everything in three days and even fixed my domain mess. It loads lightning-fast on weak LTE.” — Ramon P.</li>
+        <li class="flex-shrink-0 w-80 italic text-gray-400">“Google picked us up within a week and we outrank the chains now. That monthly Care plan saves me hours.” — Janelle O.</li>
+        <li class="flex-shrink-0 w-80 italic text-gray-400">“We got compliments on the site before we even announced it. One client said it looked like we franchised overnight. Worth every penny.” — Kevin D.</li>
+      </ul>
+    </div>
   </section>
 
   <!-- ===== Pricing ===== -->
@@ -218,14 +229,6 @@
     © 2024 Liftoff Guru — All rights reserved.
   </footer>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const carousel = document.getElementById('testimonial-carousel');
-      if (carousel) {
-        carousel.innerHTML += carousel.innerHTML;
-      }
-    });
-  </script>
 
 
 </body>
