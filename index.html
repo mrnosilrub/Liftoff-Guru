@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Liftoff Guru | Premium Local-Biz Websites</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom tweaks -->
+  <style>
+    /* optional accent for hover underline */
+    .underline-accent {
+      position: relative;
+    }
+    .underline-accent::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -2px;
+      width: 100%; height: 1px;
+      background: #fff;
+      transform: scaleX(0);
+      transition: transform .3s ease;
+    }
+    .underline-accent:hover::after { transform: scaleX(1); }
+  </style>
+</head>
+
+<body class="bg-black text-white font-sans antialiased">
+
+  <!-- ===== Navbar ===== -->
+  <header class="fixed inset-x-0 top-0 z-50 backdrop-blur bg-black/60 border-b border-white/10">
+    <nav class="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
+      <h1 class="text-xl font-semibold tracking-widest">LIFTOFF GURU</h1>
+
+      <ul class="hidden md:flex space-x-8 uppercase text-sm">
+        <li><a href="#pricing"   class="underline-accent">Pricing</a></li>
+        <li><a href="#portfolio" class="underline-accent">Portfolio</a></li>
+        <li><a href="#contact"   class="underline-accent">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="h-screen flex flex-col justify-center items-center text-center px-6 relative">
+    <div class="absolute inset-0 bg-gradient-to-br from-white/5 via-white/0 to-white/5 pointer-events-none"></div>
+
+    <h2 class="text-4xl md:text-6xl font-extrabold tracking-wide mb-6">Ready for Launch.</h2>
+    <p class="text-lg md:text-2xl max-w-xl text-gray-300">
+      Ultra-fast, stunning single-page sites for local businesses.  
+      Built, hosted & handed over in days—not weeks.
+    </p>
+
+    <a href="#pricing" class="mt-10 inline-block border border-white px-8 py-3 tracking-widest uppercase text-sm hover:bg-white hover:text-black transition">
+      See Pricing
+    </a>
+  </section>
+
+  <!-- ===== Pricing ===== -->
+  <section id="pricing" class="py-24 px-6">
+    <div class="max-w-5xl mx-auto">
+      <h3 class="text-3xl font-semibold mb-12 text-center tracking-wider">Simple, Transparent Pricing</h3>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Setup -->
+        <div class="border border-white/20 p-8 flex flex-col">
+          <h4 class="text-xl font-semibold mb-4 tracking-wider">Setup</h4>
+          <p class="text-5xl font-bold mb-2">$499</p>
+          <p class="text-gray-400 mb-6 flex-1">One-time build fee for a fully-custom, premium one-page site.</p>
+          <ul class="space-y-2 text-sm text-gray-300 list-disc list-inside mb-8">
+            <li>Design & copy</li>
+            <li>Mobile optimization</li>
+            <li>Launch within a week</li>
+          </ul>
+        </div>
+
+        <!-- Maintenance -->
+        <div class="border border-white/20 p-8 flex flex-col bg-white/5">
+          <h4 class="text-xl font-semibold mb-4 tracking-wider">Maintenance</h4>
+          <p class="text-5xl font-bold mb-2">$49<span class="text-lg font-normal">/mo</span></p>
+          <p class="text-gray-400 mb-6 flex-1">Hosting, backups, and unlimited tiny tweaks—so you never lift a finger.</p>
+          <ul class="space-y-2 text-sm text-gray-300 list-disc list-inside mb-8">
+            <li>Global CDN hosting</li>
+            <li>SSL, uptime monitoring</li>
+            <li>Minor updates on request</li>
+          </ul>
+        </div>
+
+        <!-- À-la-carte -->
+        <div class="border border-white/20 p-8 flex flex-col">
+          <h4 class="text-xl font-semibold mb-4 tracking-wider">Add-Ons</h4>
+          <ul class="space-y-4 text-sm text-gray-300 flex-1">
+            <li><span class="font-semibold">$39/mo — SEO Boost</span><br>Keyword tuning + schema so Google loves you.</li>
+            <li><span class="font-semibold">$29/mo — Google Profile</span><br>We claim, build & update your Business Profile.</li>
+            <li><span class="font-semibold">$100/yr — Domain Care</span><br>We purchase, renew & configure your custom URL.</li>
+          </ul>
+          <p class="mt-8 text-xs text-gray-500">All prices in USD. Cancel anytime.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Portfolio ===== -->
+  <section id="portfolio" class="py-24 px-6 bg-white/5">
+    <div class="max-w-5xl mx-auto">
+      <h3 class="text-3xl font-semibold mb-12 text-center tracking-wider">Live Client Sites</h3>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Repeat this block per client -->
+        <a href="https://shoutinggrounds.com" target="_blank" class="group border border-white/10 p-6 hover:bg-white/10 transition">
+          <h4 class="text-xl font-semibold mb-2 group-hover:underline">Shouting Grounds Coffee</h4>
+          <p class="text-gray-400 text-sm">Premium coffeehouse landing page with bold visuals.</p>
+        </a>
+
+        <a href="https://mrnosilrub.github.io/Holy-Nails-Spa" target="_blank" class="group border border-white/10 p-6 hover:bg-white/10 transition">
+          <h4 class="text-xl font-semibold mb-2 group-hover:underline">Holy Nails & Spa</h4>
+          <p class="text-gray-400 text-sm">Minimalist service menu + booking CTA.</p>
+        </a>
+
+        <a href="https://mrnosilrub.github.io/Reva-Beauty-Salon" target="_blank" class="group border border-white/10 p-6 hover:bg-white/10 transition">
+          <h4 class="text-xl font-semibold mb-2 group-hover:underline">Reva Beauty Salon</h4>
+          <p class="text-gray-400 text-sm">Elegant, pink-tinted portfolio site.</p>
+        </a>
+
+        <a href="https://mrnosilrub.github.io/Foot-Spa-Park-Massage" target="_blank" class="group border border-white/10 p-6 hover:bg-white/10 transition">
+          <h4 class="text-xl font-semibold mb-2 group-hover:underline">Foot Spa Park Massage</h4>
+          <p class="text-gray-400 text-sm">Relaxing spa showcase with map & services.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Contact ===== -->
+  <section id="contact" class="py-24 px-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <h3 class="text-3xl font-semibold mb-8 tracking-wider">Get in Touch</h3>
+      <p class="text-gray-300 mb-12">
+        Drop a line, let’s launch your site this week.
+      </p>
+
+      <div class="space-y-4 text-lg">
+        <p><strong>Email:</strong> <a href="mailto:hello@liftoff.guru" class="underline-accent">hello@liftoff.guru</a></p>
+        <p><strong>Phone:</strong> <a href="tel:+19493568762" class="underline-accent">(949) 356-8762</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="py-6 text-center text-xs text-gray-500 border-t border-white/10">
+    © <span id="year"></span> Liftoff Guru — All rights reserved.
+  </footer>
+
+  <script>
+    // update footer year automatically
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
