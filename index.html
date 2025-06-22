@@ -35,6 +35,15 @@
       color: transparent;
       animation: gradient-shift 6s linear infinite;
     }
+
+    .see-pricing:hover {
+      background-image: linear-gradient(90deg, #facc15, #a855f7, #22d3ee, #facc15);
+      background-size: 300% 100%;
+      -webkit-background-clip: text;
+              background-clip: text;
+      color: transparent;
+      animation: gradient-shift 6s linear infinite;
+    }
     @keyframes gradient-shift {
       0%   { background-position:   0% 50%; }
       50%  { background-position: 100% 50%; }
@@ -77,13 +86,13 @@
     <div class="absolute inset-0 bg-gradient-to-br from-white/5 via-white/0 to-white/5 pointer-events-none"></div>
     <div class="hero-glimmer absolute inset-0 pointer-events-none"></div>
 
-    <h2 class="text-4xl md:text-6xl font-extrabold tracking-wide mb-6">Ready for Launch?</h2>
+    <h2 class="text-4xl md:text-6xl font-extrabold tracking-wide mb-6">Ready for <span class="guru-gradient">Launch</span>?</h2>
     <p class="text-lg md:text-2xl max-w-xl text-gray-300">
       Ultra-fast, stunning single-page sites for local businesses.
       Built, hosted & handed over in days—not weeks.
     </p>
 
-    <a href="#pricing" class="mt-10 inline-block rounded-md bg-white text-black font-semibold shadow-lg px-8 py-3 tracking-widest uppercase text-sm hover:bg-yellow-300 transition">
+    <a href="#pricing" class="see-pricing mt-10 inline-block rounded-md bg-white text-black font-semibold shadow-lg px-8 py-3 tracking-widest uppercase text-sm hover:bg-yellow-300 transition">
       See Pricing
     </a>
   </section>
