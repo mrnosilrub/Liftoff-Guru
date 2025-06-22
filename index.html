@@ -89,7 +89,7 @@
 
 
   <section class="py-16 overflow-hidden">
-    <ul class="flex animate-scroll space-x-8 whitespace-nowrap">
+    <ul id="testimonial-carousel" class="flex animate-scroll space-x-8 whitespace-nowrap">
       <li class="flex-shrink-0 w-80 italic text-gray-400">“Our bookings jumped 27% in the first month after launch. Customers tell us the site ‘just feels better’ than other local shops.” — Carla M.</li>
       <li class="flex-shrink-0 w-80 italic text-gray-400">“I’d put off web stuff for years; they handled everything in three days and even fixed my domain mess. It loads lightning-fast on weak LTE.” — Ramon P.</li>
       <li class="flex-shrink-0 w-80 italic text-gray-400">“Google picked us up within a week and we outrank the chains now. That monthly Care plan saves me hours.” — Janelle O.</li>
@@ -220,6 +220,15 @@
   <footer class="py-6 text-center text-xs text-gray-500 border-t border-white/10">
     © 2024 Liftoff Guru — All rights reserved.
   </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const carousel = document.getElementById('testimonial-carousel');
+      if (carousel) {
+        carousel.innerHTML += carousel.innerHTML;
+      }
+    });
+  </script>
 
 
 </body>
