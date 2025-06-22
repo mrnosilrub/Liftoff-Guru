@@ -4,12 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Liftoff Guru | Premium Local-Biz Websites</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Custom tweaks -->
   <style>
+    :root { --accent: #38bdf8; }
+    body { font-family: "Poppins", sans-serif; }
     /* optional accent for hover underline */
     .underline-accent {
       position: relative;
@@ -19,20 +25,23 @@
       position: absolute;
       left: 0; bottom: -2px;
       width: 100%; height: 1px;
-      background: #fff;
+      background: var(--accent);
       transform: scaleX(0);
       transition: transform .3s ease;
     }
     .underline-accent:hover::after { transform: scaleX(1); }
+      .hero {
+        background: radial-gradient(circle at top, rgba(56,189,248,0.15), transparent 70%);
+      }
   </style>
 </head>
 
-<body class="bg-black text-white font-sans antialiased">
+<body class="bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white antialiased">
 
   <!-- ===== Navbar ===== -->
-  <header class="fixed inset-x-0 top-0 z-50 backdrop-blur bg-black/60 border-b border-white/10">
+  <header class="fixed inset-x-0 top-0 z-50 backdrop-blur bg-black/60 border-b border-white/10 shadow-lg">
     <nav class="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
-      <h1 class="text-xl font-semibold tracking-widest">LIFTOFF GURU</h1>
+      <h1 class="text-xl font-semibold tracking-widest text-sky-400">LIFTOFF GURU</h1>
 
       <ul class="hidden md:flex space-x-8 uppercase text-sm">
         <li><a href="#pricing"   class="underline-accent">Pricing</a></li>
@@ -43,22 +52,22 @@
   </header>
 
   <!-- ===== Hero ===== -->
-  <section class="h-screen flex flex-col justify-center items-center text-center px-6 relative">
+  <section class="h-screen hero flex flex-col justify-center items-center text-center px-6 relative">
     <div class="absolute inset-0 bg-gradient-to-br from-white/5 via-white/0 to-white/5 pointer-events-none"></div>
 
-    <h2 class="text-4xl md:text-6xl font-extrabold tracking-wide mb-6">Ready for Launch.</h2>
+    <h2 class="text-4xl md:text-6xl font-extrabold tracking-wide mb-6 drop-shadow">Ready for Launch.</h2>
     <p class="text-lg md:text-2xl max-w-xl text-gray-300">
       Ultra-fast, stunning single-page sites for local businesses.  
       Built, hosted & handed over in days—not weeks.
     </p>
 
-    <a href="#pricing" class="mt-10 inline-block border border-white px-8 py-3 tracking-widest uppercase text-sm hover:bg-white hover:text-black transition">
+    <a href="#pricing" class="mt-10 inline-block text-sky-400 border border-sky-400 px-8 py-3 tracking-widest uppercase text-sm hover:bg-sky-400 hover:text-black transition">
       See Pricing
     </a>
   </section>
 
   <!-- ===== Pricing ===== -->
-  <section id="pricing" class="py-24 px-6">
+  <section id="pricing" class="py-24 px-6 bg-black/10">
     <div class="max-w-5xl mx-auto">
       <h3 class="text-3xl font-semibold mb-12 text-center tracking-wider">Simple, Transparent Pricing</h3>
 
@@ -102,7 +111,7 @@
   </section>
 
   <!-- ===== Portfolio ===== -->
-  <section id="portfolio" class="py-24 px-6 bg-white/5">
+  <section id="portfolio" class="py-24 px-6 bg-black/20">
     <div class="max-w-5xl mx-auto">
       <h3 class="text-3xl font-semibold mb-12 text-center tracking-wider">Live Client Sites</h3>
 
@@ -132,7 +141,7 @@
   </section>
 
   <!-- ===== Contact ===== -->
-  <section id="contact" class="py-24 px-6">
+  <section id="contact" class="py-24 px-6 bg-black/10">
     <div class="max-w-3xl mx-auto text-center">
       <h3 class="text-3xl font-semibold mb-8 tracking-wider">Get in Touch</h3>
       <p class="text-gray-300 mb-12">
@@ -147,7 +156,7 @@
   </section>
 
   <!-- ===== Footer ===== -->
-  <footer class="py-6 text-center text-xs text-gray-500 border-t border-white/10">
+  <footer class="py-6 text-center text-xs text-gray-400 border-t border-white/10 bg-black/20">
     © <span id="year"></span> Liftoff Guru — All rights reserved.
   </footer>
 
