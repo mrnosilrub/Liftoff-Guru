@@ -66,6 +66,14 @@
       animation: marquee 30s linear infinite;
     }
 
+    /* alternating section gradients */
+    .section-alt-1 {
+      background-image: linear-gradient(to bottom, #0f0f0f, #000000);
+    }
+    .section-alt-2 {
+      background-image: linear-gradient(to bottom, #000000, #0f0f0f);
+    }
+
 
 
   </style>
@@ -89,7 +97,7 @@
   </header>
 
   <!-- ===== Hero ===== -->
-  <section class="hero h-screen flex flex-col justify-center items-center text-center px-6 relative">
+  <section class="hero h-screen flex flex-col justify-center items-center text-center px-6 relative section-alt-1">
     <div class="absolute inset-0 bg-gradient-to-br from-white/5 via-white/0 to-white/5 pointer-events-none"></div>
 
     <h2 class="text-4xl md:text-6xl font-extrabold tracking-wide mb-6">Ready for <span class="guru-static">Launch</span>?</h2>
@@ -104,7 +112,7 @@
   </section>
 
 
-  <section id="social-proof" class="py-16 overflow-hidden bg-white/5">
+  <section id="social-proof" class="py-16 overflow-hidden section-alt-2">
     <div class="relative flex">
       <ul class="flex space-x-8 flex-nowrap animate-marquee">
         <li class="flex-shrink-0 w-80 italic text-gray-400">“Our bookings jumped 27% in the first month after launch. Customers tell us the site ‘just feels better’ than other local shops.” — Carla M.</li>
@@ -122,7 +130,7 @@
   </section>
 
   <!-- ===== Pricing ===== -->
-  <section id="pricing" class="py-24 px-6">
+  <section id="pricing" class="py-24 px-6 section-alt-1">
     <div class="max-w-5xl mx-auto">
         <h3 class="text-3xl font-semibold mb-8 text-center tracking-wider">Simple, Transparent Pricing</h3>
         <div class="mb-12 flex gap-6 text-sm tracking-widest text-gray-400 justify-center" data-sr>
@@ -175,7 +183,7 @@
     </div>
   </section>
 
-  <section id="faq" class="py-16 px-6">
+  <section id="faq" class="py-16 px-6 section-alt-2">
     <div class="max-w-3xl mx-auto">
       <h3 class="text-3xl font-semibold mb-8 text-center tracking-wider">FAQs</h3>
 
@@ -205,7 +213,7 @@
   </section>
 
   <!-- ===== Portfolio ===== -->
-  <section id="portfolio" class="py-24 px-6 bg-white/5">
+  <section id="portfolio" class="py-24 px-6 section-alt-1">
     <div class="max-w-5xl mx-auto">
       <h3 class="text-3xl font-semibold mb-12 text-center tracking-wider">Live Client Sites</h3>
 
@@ -220,7 +228,7 @@
   </section>
 
   <!-- ===== Contact ===== -->
-  <section id="contact" class="py-24 px-6">
+  <section id="contact" class="py-24 px-6 section-alt-2">
     <div class="max-w-3xl mx-auto text-center">
       <h3 class="text-3xl font-semibold mb-8 tracking-wider">Get in Touch</h3>
       <p class="text-gray-300 mb-12">
