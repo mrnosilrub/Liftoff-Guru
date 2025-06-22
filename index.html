@@ -26,6 +26,20 @@
     }
     .underline-accent:hover::after { transform: scaleX(1); }
 
+    /* animated gradient for "Guru" text */
+    .guru-gradient {
+      background: linear-gradient(90deg, #fff, #888, #fff);
+      background-size: 200% 100%;
+      -webkit-background-clip: text;
+              background-clip: text;
+      color: transparent;
+      animation: gradient-shift 4s ease-in-out infinite;
+    }
+    @keyframes gradient-shift {
+      0%,100% { background-position: 0 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
     .hero::before {
       content: '';
       position: absolute;
@@ -44,7 +58,7 @@
   <header class="fixed inset-x-0 top-0 z-50 backdrop-blur bg-black/60 border-b border-white/10">
     <nav class="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
       <h1 class="text-xl font-semibold tracking-widest">
-        <a href="#top" onclick="document.documentElement.scrollTo({top:0,behavior:'auto'});">Liftoff.<span class="bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-400 to-white">Guru</span></a>
+        <a href="#top" onclick="document.documentElement.scrollTo({top:0,behavior:'auto'});">Liftoff.<span class="guru-gradient">Guru</span></a>
       </h1>
 
       <ul class="hidden md:flex space-x-8 uppercase text-sm">
