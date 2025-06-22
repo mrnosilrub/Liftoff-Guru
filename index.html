@@ -40,15 +40,6 @@
       50% { background-position: 100% 50%; }
     }
 
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg width='4' height='4' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='1' cy='1' r='1' fill='white'/%3E%3C/svg%3E");
-      background-repeat: repeat;
-      opacity: 0.1;
-      pointer-events: none;
-    }
   </style>
 </head>
 
@@ -70,7 +61,7 @@
   </header>
 
   <!-- ===== Hero ===== -->
-  <section class="hero h-screen flex flex-col justify-center items-center text-center px-6 relative" data-sr>
+  <section class="hero h-screen flex flex-col justify-center items-center text-center px-6 relative">
     <div class="absolute inset-0 bg-gradient-to-br from-white/5 via-white/0 to-white/5 pointer-events-none"></div>
 
     <h2 class="text-4xl md:text-6xl font-extrabold tracking-wide mb-6">Ready for Launch?</h2>
@@ -84,12 +75,12 @@
     </a>
   </section>
 
-  <div class="mt-10 flex gap-6 text-sm tracking-widest text-gray-400" data-sr>
+  <div class="mt-10 flex gap-6 text-sm tracking-widest text-gray-400">
     <span>Design</span><span>•</span><span>Hosting</span>
     <span>•</span><span>Care</span>
   </div>
 
-  <section class="py-16 overflow-hidden" data-sr>
+  <section class="py-16 overflow-hidden">
     <ul class="flex gap-8 animate-scroll whitespace-nowrap">
       <li class="min-w-full italic text-gray-400">“Site live in 48 h and blazing fast.” — Café Owner</li>
       <li class="min-w-full italic text-gray-400">“Zero hassle, customers love it.” — Salon Manager</li>
@@ -101,7 +92,7 @@
   </section>
 
   <!-- ===== Pricing ===== -->
-  <section id="pricing" class="py-24 px-6" data-sr>
+  <section id="pricing" class="py-24 px-6">
     <div class="max-w-5xl mx-auto">
       <h3 class="text-3xl font-semibold mb-12 text-center tracking-wider">Simple, Transparent Pricing</h3>
 
@@ -151,7 +142,7 @@
     </div>
   </section>
 
-  <section id="faq" class="py-16 px-6" data-sr>
+  <section id="faq" class="py-16 px-6">
     <div class="max-w-3xl mx-auto">
       <h3 class="text-3xl font-semibold mb-8 text-center tracking-wider">FAQs</h3>
 
@@ -181,7 +172,7 @@
   </section>
 
   <!-- ===== Portfolio ===== -->
-  <section id="portfolio" class="py-24 px-6 bg-white/5" data-sr>
+  <section id="portfolio" class="py-24 px-6 bg-white/5">
     <div class="max-w-5xl mx-auto">
       <h3 class="text-3xl font-semibold mb-12 text-center tracking-wider">Live Client Sites</h3>
 
@@ -196,7 +187,7 @@
   </section>
 
   <!-- ===== Contact ===== -->
-  <section id="contact" class="py-24 px-6" data-sr>
+  <section id="contact" class="py-24 px-6">
     <div class="max-w-3xl mx-auto text-center">
       <h3 class="text-3xl font-semibold mb-8 tracking-wider">Get in Touch</h3>
       <p class="text-gray-300 mb-12">
@@ -215,9 +206,5 @@
     © 2024 Liftoff Guru — All rights reserved.
   </footer>
 
-  <script src="https://unpkg.com/scrollreveal"></script>
-  <script>
-    ScrollReveal().reveal('[data-sr]',{distance:'20px',duration:300});
-  </script>
 </body>
 </html>
