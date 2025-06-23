@@ -13,7 +13,7 @@
   <!-- Custom tweaks -->
   <style>
     html {
-      scroll-padding-top: 72px;
+      scroll-padding-top: 72px; /* Fallback if JS disabled */
       background-color: #000000;
     }
     /* optional accent for hover underline */
@@ -386,6 +386,16 @@
         1024: { slidesPerView: 3 }
       }
     });
+    function updateScrollPadding() {
+      const header = document.querySelector('header');
+      if (header) {
+        document.documentElement.style.scrollPaddingTop = header.offsetHeight + 'px';
+      }
+    }
+    window.addEventListener('load', updateScrollPadding);
+    window.addEventListener('resize', updateScrollPadding);
+    const toggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
     const toggle = document.getElementById('nav-toggle');
     const mobileMenu = document.getElementById('nav-menu');
     const barsIcon = toggle.innerHTML;
