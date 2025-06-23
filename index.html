@@ -372,8 +372,11 @@
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init();
-    new Swiper('.testimonials-swiper', {
+    if (window.AOS) {
+      AOS.init();
+    }
+    if (window.Swiper) {
+      new Swiper('.testimonials-swiper', {
       loop: true,
       autoplay: { delay: 5000, disableOnInteraction: false },
       allowTouchMove: false,
