@@ -92,9 +92,7 @@
         <a href="#top" onclick="document.documentElement.scrollTo({top:0,behavior:'auto'});">Liftoff.<span class="guru-gradient">Guru</span></a>
       </h1>
 
-      <button id="nav-toggle" class="md:hidden p-2 text-3xl focus:outline-none" aria-label="Toggle navigation">&#9776;</button>
-
-      <ul id="desktop-menu" class="hidden md:flex space-x-8 uppercase text-sm">
+      <ul id="main-menu" class="flex space-x-4 md:space-x-8 uppercase text-sm">
         <li><a href="#social-proof" class="underline-accent">Reviews</a></li>
         <li><a href="#process"      class="underline-accent">Process</a></li>
         <li><a href="#pricing"      class="underline-accent">Pricing</a></li>
@@ -103,7 +101,6 @@
         <li><a href="#contact"      class="underline-accent">Contact</a></li>
       </ul>
     </nav>
-    <ul id="nav-menu" class="md:hidden fixed inset-0 hidden flex flex-col items-center justify-center space-y-8 text-lg uppercase bg-black/90"></ul>
   </header>
 
   <!-- ===== Hero ===== -->
@@ -395,24 +392,6 @@
     }
     window.addEventListener('load', updateScrollPadding);
     window.addEventListener('resize', updateScrollPadding);
-    const toggle = document.getElementById('nav-toggle');
-    const desktopMenu = document.getElementById('desktop-menu');
-    const mobileMenu = document.getElementById('nav-menu');
-    if (desktopMenu && mobileMenu && mobileMenu.innerHTML.trim() === '') {
-      mobileMenu.innerHTML = desktopMenu.innerHTML;
-    }
-    const barsIcon = toggle.innerHTML;
-    const closeIcon = '&times;';
-    toggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-      toggle.innerHTML = mobileMenu.classList.contains('hidden') ? barsIcon : closeIcon;
-    });
-    mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
-      if (!mobileMenu.classList.contains('hidden')) {
-        mobileMenu.classList.add('hidden');
-        toggle.innerHTML = barsIcon;
-      }
-    }));
   </script>
 
 </body>
