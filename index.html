@@ -7,6 +7,8 @@
 
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
 
   <!-- Custom tweaks -->
   <style>
@@ -108,12 +110,19 @@
   </section>
 
 
-  <section id="social-proof" class="py-16 section-alt-2">
-    <div class="max-w-3xl mx-auto text-center">
-      <h3 class="text-3xl font-semibold mb-10 tracking-wider">What Clients Say</h3>
-      <div id="testimonial-carousel" class="italic text-gray-300 text-lg transition-opacity duration-500"></div>
-    </div>
-  </section>
+    <section id="social-proof" class="py-16 section-alt-2">
+      <div class="max-w-3xl mx-auto text-center">
+        <h3 class="text-3xl font-semibold mb-10 tracking-wider">What Clients Say</h3>
+        <div class="swiper testimonials-swiper h-56">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide p-4"><p class="italic">&ldquo;Our bookings jumped 27% in the first month after launch. Customers tell us the site just feels better than other local shops.&rdquo;<br><br>&mdash; Carla M.</p></div>
+            <div class="swiper-slide p-4"><p class="italic">&ldquo;I&rsquo;d put off web stuff for years; they handled everything in three days and even fixed my domain mess. It loads lightning-fast on weak LTE.&rdquo;<br><br>&mdash; Ramon P.</p></div>
+            <div class="swiper-slide p-4"><p class="italic">&ldquo;Google picked us up within a week and we outrank the chains now. That monthly Care plan saves me hours.&rdquo;<br><br>&mdash; Janelle O.</p></div>
+            <div class="swiper-slide p-4"><p class="italic">&ldquo;We got compliments on the site before we even announced it. One client said it looked like we franchised overnight. Worth every penny.&rdquo;<br><br>&mdash; Kevin D.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
   <!-- ===== Pricing ===== -->
   <section id="pricing" class="py-24 px-6 section-alt-1">
@@ -233,25 +242,21 @@
     © 2024 Liftoff Guru — All rights reserved.
   </footer>
 
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    const quotes = [
-      "\u201cOur bookings jumped 27% in the first month after launch. Customers tell us the site just feels better than other local shops.\u201d \u2014 Carla M.",
-      "\u201cI\u2019d put off web stuff for years; they handled everything in three days and even fixed my domain mess. It loads lightning-fast on weak LTE.\u201d \u2014 Ramon P.",
-      "\u201cGoogle picked us up within a week and we outrank the chains now. That monthly Care plan saves me hours.\u201d \u2014 Janelle O.",
-      "\u201cWe got compliments on the site before we even announced it. One client said it looked like we franchised overnight. Worth every penny.\u201d \u2014 Kevin D."
-    ];
-    let idx = 0;
-    const container = document.getElementById('testimonial-carousel');
-    function showQuote() {
-      container.style.opacity = 0;
-      setTimeout(() => {
-        container.textContent = quotes[idx];
-        container.style.opacity = 1;
-        idx = (idx + 1) % quotes.length;
-      }, 500);
-    }
-    showQuote();
-    setInterval(showQuote, 5000);
+    AOS.init();
+    new Swiper('.testimonials-swiper', {
+      loop: true,
+      autoplay: { delay: 5000, disableOnInteraction: false },
+      allowTouchMove: false,
+      slidesPerView: 1,
+      spaceBetween: 20,
+      breakpoints: {
+        768: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 }
+      }
+    });
   </script>
 
 </body>
