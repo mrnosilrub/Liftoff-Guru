@@ -72,6 +72,12 @@
       background-color: #111111;
     }
 
+    .hero-animated-bg {
+      background-image: linear-gradient(90deg, #facc15, #a855f7, #22d3ee, #facc15);
+      background-size: 300% 100%;
+      animation: gradient-shift 6s linear infinite;
+    }
+
 
 
   </style>
@@ -101,7 +107,7 @@
   </header>
 
   <!-- ===== Hero ===== -->
-  <section class="hero h-screen flex flex-col justify-center items-center text-center px-6 relative section-alt-1">
+  <section class="hero h-screen flex flex-col justify-center items-center text-center px-6 relative section-alt-1 hero-animated-bg">
 
     <h2 class="text-4xl md:text-6xl font-extrabold tracking-wide mb-6">Ready for Liftoff?</h2>
     <p class="text-lg md:text-2xl max-w-xl text-gray-300">
