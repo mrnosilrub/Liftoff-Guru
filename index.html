@@ -57,13 +57,12 @@
       100% { background-position:   0% 50%; }
     }
 
-    /* social proof marquee */
-    @keyframes marquee {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-100%); }
-    }
-    .animate-marquee {
-      animation: marquee 30s linear infinite;
+    /* testimonial cards */
+    .testimonial {
+      background-color: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 0.5rem;
+      padding: 1.5rem;
     }
 
     /* alternating solid section colors */
@@ -112,26 +111,27 @@
   </section>
 
 
-  <section id="social-proof" class="py-16 overflow-hidden section-alt-2">
-    <div class="relative flex w-max">
-      <ul class="flex space-x-8 flex-nowrap animate-marquee">
-        <li class="flex-shrink-0 w-80 italic text-gray-400">“Our bookings jumped 27% in the first month after launch. Customers tell us the site ‘just feels better’ than other local shops.”<br><br>— Carla M.</li>
-        <li class="flex-shrink-0 w-80 italic text-gray-400">“I’d put off web stuff for years; they handled everything in three days and even fixed my domain mess. It loads lightning-fast on weak LTE.”<br><br>— Ramon P.</li>
-        <li class="flex-shrink-0 w-80 italic text-gray-400">“Google picked us up within a week and we outrank the chains now. That monthly Care plan saves me hours.”<br><br>— Janelle O.</li>
-        <li class="flex-shrink-0 w-80 italic text-gray-400">“We got compliments on the site before we even announced it. One client said it looked like we franchised overnight. Worth every penny.”<br><br>— Kevin D.</li>
-      </ul>
-      <ul class="flex space-x-8 flex-nowrap animate-marquee absolute left-0 translate-x-full" aria-hidden="true">
-        <li class="flex-shrink-0 w-80 italic text-gray-400">“Our bookings jumped 27% in the first month after launch. Customers tell us the site ‘just feels better’ than other local shops.” — Carla M.</li>
-        <li class="flex-shrink-0 w-80 italic text-gray-400">“I’d put off web stuff for years; they handled everything in three days and even fixed my domain mess. It loads lightning-fast on weak LTE.” — Ramon P.</li>
-        <li class="flex-shrink-0 w-80 italic text-gray-400">“Google picked us up within a week and we outrank the chains now. That monthly Care plan saves me hours.” — Janelle O.</li>
-        <li class="flex-shrink-0 w-80 italic text-gray-400">“We got compliments on the site before we even announced it. One client said it looked like we franchised overnight. Worth every penny.” — Kevin D.</li>
-      </ul>
-      <ul class="flex space-x-8 flex-nowrap animate-marquee absolute left-full" aria-hidden="true">
-        <li class="flex-shrink-0 w-80 italic text-gray-400">“Our bookings jumped 27% in the first month after launch. Customers tell us the site ‘just feels better’ than other local shops.”<br><br>— Carla M.</li>
-        <li class="flex-shrink-0 w-80 italic text-gray-400">“I’d put off web stuff for years; they handled everything in three days and even fixed my domain mess. It loads lightning-fast on weak LTE.”<br><br>— Ramon P.</li>
-        <li class="flex-shrink-0 w-80 italic text-gray-400">“Google picked us up within a week and we outrank the chains now. That monthly Care plan saves me hours.”<br><br>— Janelle O.</li>
-        <li class="flex-shrink-0 w-80 italic text-gray-400">“We got compliments on the site before we even announced it. One client said it looked like we franchised overnight. Worth every penny.”<br><br>— Kevin D.</li>
-      </ul>
+  <section id="social-proof" class="py-16 section-alt-2">
+    <div class="max-w-5xl mx-auto">
+      <h3 class="text-3xl font-semibold mb-10 text-center tracking-wider">What Clients Say</h3>
+      <div class="grid md:grid-cols-2 gap-8">
+        <blockquote class="testimonial">
+          <p class="italic text-gray-300">“Our bookings jumped 27% in the first month after launch. Customers tell us the site just feels better than other local shops.”</p>
+          <footer class="mt-4 text-sm text-gray-400">— Carla M.</footer>
+        </blockquote>
+        <blockquote class="testimonial">
+          <p class="italic text-gray-300">“I’d put off web stuff for years; they handled everything in three days and even fixed my domain mess. It loads lightning-fast on weak LTE.”</p>
+          <footer class="mt-4 text-sm text-gray-400">— Ramon P.</footer>
+        </blockquote>
+        <blockquote class="testimonial">
+          <p class="italic text-gray-300">“Google picked us up within a week and we outrank the chains now. That monthly Care plan saves me hours.”</p>
+          <footer class="mt-4 text-sm text-gray-400">— Janelle O.</footer>
+        </blockquote>
+        <blockquote class="testimonial">
+          <p class="italic text-gray-300">“We got compliments on the site before we even announced it. One client said it looked like we franchised overnight. Worth every penny.”</p>
+          <footer class="mt-4 text-sm text-gray-400">— Kevin D.</footer>
+        </blockquote>
+      </div>
     </div>
   </section>
 
