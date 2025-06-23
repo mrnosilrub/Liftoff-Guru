@@ -86,11 +86,7 @@
         <a href="#top" onclick="document.documentElement.scrollTo({top:0,behavior:'auto'});">Liftoff.<span class="guru-gradient">Guru</span></a>
       </h1>
 
-      <button id="menu-toggle" class="md:hidden p-2 focus:outline-none">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
+      <button id="nav-toggle" class="md:hidden p-2 text-3xl focus:outline-none" aria-label="Toggle navigation">&#9776;</button>
 
       <ul class="hidden md:flex space-x-8 uppercase text-sm">
         <li><a href="#social-proof" class="underline-accent">Social Proof</a></li>
@@ -101,7 +97,7 @@
         <li><a href="#contact"      class="underline-accent">Contact</a></li>
       </ul>
     </nav>
-    <ul id="mobile-menu" class="md:hidden fixed inset-0 hidden flex flex-col items-center justify-center space-y-8 text-lg uppercase bg-black/90">
+    <ul id="nav-menu" class="md:hidden fixed inset-0 hidden flex flex-col items-center justify-center space-y-8 text-lg uppercase bg-black/90">
       <li><a href="#social-proof" class="underline-accent">Social Proof</a></li>
       <li><a href="#process"      class="underline-accent">Process</a></li>
       <li><a href="#pricing"      class="underline-accent">Pricing</a></li>
@@ -388,13 +384,19 @@
         1024: { slidesPerView: 3 }
       }
     });
-    const toggle = document.getElementById('menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
+    const toggle = document.getElementById('nav-toggle');
+    const mobileMenu = document.getElementById('nav-menu');
+    const barsIcon = toggle.innerHTML;
+    const closeIcon = '&times;';
     toggle.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
+      toggle.innerHTML = mobileMenu.classList.contains('hidden') ? barsIcon : closeIcon;
     });
     mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
-      mobileMenu.classList.add('hidden');
+      if (!mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden');
+        toggle.innerHTML = barsIcon;
+      }
     }));
   </script>
 
