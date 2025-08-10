@@ -14,12 +14,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Install pnpm
+        run: npm i -g pnpm@9
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: "pnpm"
-      - name: Install pnpm
-        run: npm i -g pnpm@9
+          cache-dependency-path: pnpm-lock.yaml
       - name: Show versions
         run: node -v && pnpm -v
       - run: pnpm install --frozen-lockfile
