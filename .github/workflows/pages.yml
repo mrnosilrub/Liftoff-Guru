@@ -18,12 +18,8 @@ jobs:
         with:
           node-version: 20
           cache: "pnpm"
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9
-          run_install: false
-          standalone: true
+      - name: Install pnpm
+        run: npm i -g pnpm@9
       - name: Show versions
         run: node -v && pnpm -v
       - run: pnpm install --frozen-lockfile
