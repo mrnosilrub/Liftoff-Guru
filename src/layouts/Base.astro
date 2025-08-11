@@ -36,7 +36,7 @@ const { title = "Liftoff.Guru" } = Astro.props;
     </nav>
   </header>
 
-  <div id="mobile-menu" class="md:hidden scale-y-0 opacity-0 pointer-events-none overflow-hidden border-b border-zinc-800/60 bg-zinc-950/95 backdrop-blur-sm md:backdrop-blur transform origin-top transform-gpu transition-transform transition-opacity duration-400 ease-out" aria-hidden="true">
+  <div id="mobile-menu" class="md:hidden max-h-0 scale-y-0 opacity-0 pointer-events-none overflow-hidden border-b-0 border-zinc-800/60 bg-zinc-950/95 backdrop-blur-sm md:backdrop-blur transform origin-top transform-gpu transition-all duration-400 ease-out" aria-hidden="true">
     <div class="mx-auto max-w-6xl px-4 py-4">
       <ul class="flex flex-col gap-3 text-base text-zinc-200">
         <li><a class="block rounded-md px-2 py-2 hover:bg-zinc-900/60" href="/projects">Projects</a></li>
@@ -69,8 +69,8 @@ const { title = "Liftoff.Guru" } = Astro.props;
   const btn = document.getElementById('menu-button');
   const panel = document.getElementById('mobile-menu');
   if (btn && panel) {
-    const openClasses = ['scale-y-100', 'opacity-100', 'pointer-events-auto'];
-    const closedClasses = ['scale-y-0', 'opacity-0', 'pointer-events-none'];
+    const openClasses = ['max-h-[60vh]', 'scale-y-100', 'opacity-100', 'pointer-events-auto', 'border-b'];
+    const closedClasses = ['max-h-0', 'scale-y-0', 'opacity-0', 'pointer-events-none', 'border-b-0'];
     const setOpen = (open) => {
       if (open) {
         panel.classList.add(...openClasses);
