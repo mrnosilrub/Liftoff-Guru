@@ -6,5 +6,6 @@ Static assets that are copied as-is to the final build output.
 
 ## Files
 - `favicon.ico`: Image/ico asset.
+- `favicon.svg`: SVG vector asset.
 
 Last updated: 2025-08-10

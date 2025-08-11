@@ -22,20 +22,20 @@ All notable changes to this project will be documented in this file.
   - `/src/styles/function.md`: Styles folder overview
 
 ## 2025-08-10
-- Updated docs for `/src/content/projects`: Generated/updated function.md
-- Updated docs for `/src/content/projects`: Generated/updated function.md
-- Updated docs for `/`: Generated/updated function.md
-- Updated docs for `/planning`: Generated/updated function.md
-- Updated docs for `/public`: Generated/updated function.md
-- Updated docs for `/scripts`: Generated/updated function.md
-- Updated docs for `/src`: Generated/updated function.md
-- Updated docs for `/src/assets`: Generated/updated function.md
-- Updated docs for `/src/components`: Generated/updated function.md
-- Updated docs for `/src/content`: Generated/updated function.md
-- Updated docs for `/src/content/projects`: Generated/updated function.md
-- Updated docs for `/src/layouts`: Generated/updated function.md
-- Updated docs for `/src/pages`: Generated/updated function.md
-- Updated docs for `/src/pages/blog`: Generated/updated function.md
-- Updated docs for `/src/pages/projects`: Generated/updated function.md
-- Updated docs for `/src/pages/studio-log`: Generated/updated function.md
-- Updated docs for `/src/styles`: Generated/updated function.md
+
+- Updated: Auto-generated folder docs
+  - `/`: Generated/updated function.md
+  - `/planning`: Generated/updated function.md
+  - `/public`: Generated/updated function.md
+  - `/scripts`: Generated/updated function.md
+  - `/src`: Generated/updated function.md
+  - `/src/assets`: Generated/updated function.md
+  - `/src/components`: Generated/updated function.md
+  - `/src/content`: Generated/updated function.md
+  - `/src/content/projects`: Generated/updated function.md
+  - `/src/layouts`: Generated/updated function.md
+  - `/src/pages`: Generated/updated function.md
+  - `/src/pages/blog`: Generated/updated function.md
+  - `/src/pages/projects`: Generated/updated function.md
+  - `/src/pages/studio-log`: Generated/updated function.md
+  - `/src/styles`: Generated/updated function.md

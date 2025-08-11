@@ -9,6 +9,7 @@ Route files rendered by Astro.
 - `collaborate.astro`: Astro page route.
 - `index.astro`: Astro page route.
 - `mdx-demo.mdx`: MDX document/page.
+- `thanks.astro`: Astro page route.
 
 ## Subfolders
 - `blog/`: Subfolder.

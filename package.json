@@ -10,7 +10,8 @@
     "lint": "biome check .",
     "test": "vitest run",
     "docs:build": "node scripts/update-docs.mjs",
-    "docs:watch": "node scripts/update-docs.mjs --watch"
+    "docs:watch": "node scripts/update-docs.mjs --watch",
+    "docs:normalize": "node scripts/update-docs.mjs --normalize"
   },
   "devDependencies": {
     "@astrojs/mdx": "^4.3.3",

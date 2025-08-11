@@ -188,21 +188,251 @@ async function walkAndGenerate(startDirAbs) {
   return changedFiles;
 }
 
+function ensureChangelogHeader(content) {
+  const header = '# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n';
+  if (!content || content.trim().length === 0) return header;
+  // If file starts with just '# Changelog' but misses the sentence, keep as-is
+  return content;
+}
+
+function findDaySectionBounds(content, dateStr) {
+  const dateHeader = `## ${dateStr}`;
+  const start = content.indexOf(dateHeader);
+  if (start === -1) return { start: -1, end: -1 };
+  const rest = content.slice(start + dateHeader.length);
+  const nextHeaderRel = rest.search(/\n##\s+\d{4}-\d{2}-\d{2}/);
+  const end = nextHeaderRel === -1 ? content.length : start + dateHeader.length + nextHeaderRel;
+  return { start, end };
+}
+
+function dedupeEntries(entries) {
+  const seen = new Set();
+  const out = [];
+  for (const e of entries) {
+    const key = `${e.dir}|${e.reason || ''}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push({ dir: e.dir, reason: e.reason || '' });
+  }
+  out.sort((a, b) => a.dir.localeCompare(b.dir));
+  return out;
+}
+
+function buildUpdatedBlockLines(entries) {
+  const lines = [];
+  lines.push('- Updated: Auto-generated folder docs');
+  for (const e of entries) {
+    lines.push(`  - \`${e.dir}\`${e.reason ? `: ${e.reason}` : ''}`);
+  }
+  return lines;
+}
+
+function injectOrMergeUpdatedBlock(dayBlock, entries) {
+  const UPDATED_LINE = '- Updated: Auto-generated folder docs';
+  const lines = dayBlock.split('\n');
+  const headerIdx = 0; // dayBlock always starts with the date header
+  let insertAt = lines.length; // default append to end of block
+
+  // Search for existing Updated summary line
+  let updatedIdx = -1;
+  for (let i = 1; i < lines.length; i++) {
+    const line = lines[i];
+    if (line.trim() === UPDATED_LINE) {
+      updatedIdx = i;
+      break;
+    }
+    // Track last top-level bullet for potential insertion grouping
+    if (/^\-\s+/.test(line)) insertAt = i + 1;
+  }
+
+  if (updatedIdx === -1) {
+    // No updated block yet; append a new one
+    const newBlock = buildUpdatedBlockLines(entries);
+    // Ensure there is a blank line between sections if needed
+    if (lines[lines.length - 1].trim().length > 0) lines.push('');
+    for (const l of newBlock) lines.push(l);
+    return lines.join('\n');
+  }
+
+  // Merge into existing updated block
+  // Collect existing sub-items under the updated header
+  const existingSet = new Set();
+  let j = updatedIdx + 1;
+  while (j < lines.length) {
+    const l = lines[j];
+    if (/^\s{2}\-\s+/.test(l)) {
+      existingSet.add(l.trim());
+      j += 1;
+      continue;
+    }
+    if (/^\-\s+/.test(l) || /^##\s+/.test(l)) break; // next top-level item or next day header
+    j += 1;
+  }
+
+  const incoming = buildUpdatedBlockLines(entries).slice(1).map(s => s.trim());
+  for (const l of incoming) existingSet.add(l);
+  const merged = Array.from(existingSet);
+  merged.sort((a, b) => a.localeCompare(b));
+
+  // Replace the old sub-block between updatedIdx+1 and j with merged
+  const before = lines.slice(0, updatedIdx + 1);
+  const after = lines.slice(j);
+  return [...before, ...merged.map(s => '  ' + s), ...after].join('\n');
+}
+
 async function appendChangelog(entries) {
   if (entries.length === 0) return;
   const changelogPath = path.join(repoRoot, 'changelog.md');
   let existing = '';
   try { existing = await fsp.readFile(changelogPath, 'utf8'); } catch {}
-  const dateHeader = `## ${today()}`;
-  const bullets = entries.map(e => `- Updated docs for \`${e.dir}\`${e.reason ? `: ${e.reason}` : ''}`).join('\n');
-  if (existing.includes(dateHeader)) {
-    const updated = existing.replace(dateHeader, `${dateHeader}\n${bullets}`);
-    await fsp.writeFile(changelogPath, updated, 'utf8');
-  } else {
-    const prefix = existing.trim().length > 0 ? `${existing.trim()}\n\n` : '# Changelog\n\n';
-    const newContent = `${prefix}${dateHeader}\n${bullets}\n`;
+  existing = ensureChangelogHeader(existing);
+
+  const dateStr = today();
+  const { start, end } = findDaySectionBounds(existing, dateStr);
+  const uniqueEntries = dedupeEntries(entries);
+  const dateHeader = `## ${dateStr}`;
+
+  if (start === -1) {
+    // Create a fresh day section
+    const blockLines = [dateHeader, ...buildUpdatedBlockLines(uniqueEntries)];
+    const newContent = existing.trimEnd() + '\n\n' + blockLines.join('\n') + '\n';
     await fsp.writeFile(changelogPath, newContent, 'utf8');
+    return;
   }
+
+  const dayBlock = existing.slice(start, end);
+  const updatedDayBlock = injectOrMergeUpdatedBlock(dayBlock, uniqueEntries);
+  const newContent = existing.slice(0, start) + updatedDayBlock + existing.slice(end);
+  await fsp.writeFile(changelogPath, newContent, 'utf8');
+}
+
+function parseAllDaySections(content) {
+  const re = /\n##\s+(\d{4}-\d{2}-\d{2})/g;
+  const sections = [];
+  let firstStart = content.indexOf('\n## ');
+  if (firstStart === -1) {
+    // Maybe file starts with the first section
+    if (content.startsWith('## ')) firstStart = 0;
+  }
+  const indices = [];
+  if (firstStart !== -1) indices.push(firstStart);
+  let m;
+  while ((m = re.exec(content)) !== null) {
+    const idx = m.index + 1; // account for the leading \n in the regex
+    if (!indices.includes(idx)) indices.push(idx);
+  }
+  indices.sort((a, b) => a - b);
+  for (let i = 0; i < indices.length; i++) {
+    const start = indices[i];
+    const end = i + 1 < indices.length ? indices[i + 1] : content.length;
+    const block = content.slice(start, end);
+    const headerMatch = block.match(/^##\s+(\d{4}-\d{2}-\d{2})/);
+    if (!headerMatch) continue;
+    sections.push({ date: headerMatch[1], start, end });
+  }
+  return sections;
+}
+
+function extractLegacyUpdatedEntriesFromBlock(block) {
+  const lines = block.split('\n');
+  const legacyRegex = /^-\s+Updated docs for\s+`([^`]+)`(?::\s*(.*))?$/;
+  const entries = [];
+  for (const l of lines) {
+    const m = l.match(legacyRegex);
+    if (m) {
+      const dir = m[1].trim();
+      const reason = (m[2] || '').trim();
+      entries.push({ dir, reason });
+    }
+  }
+  return entries;
+}
+
+function removeLegacyUpdatedLines(block) {
+  const legacyRegex = /^-\s+Updated docs for\s+`[^`]+`(?::\s*.*)?$/;
+  return block
+    .split('\n')
+    .filter(l => !legacyRegex.test(l))
+    .join('\n');
+}
+
+function extractExistingUpdatedBlockEntries(block) {
+  const lines = block.split('\n');
+  const UPDATED_LINE = '- Updated: Auto-generated folder docs';
+  const entries = [];
+  for (let i = 0; i < lines.length; i++) {
+    if (lines[i].trim() !== UPDATED_LINE) continue;
+    let j = i + 1;
+    while (j < lines.length) {
+      const l = lines[j];
+      const m = l.match(/^\s{2}-\s+`([^`]+)`(?::\s*(.*))?$/);
+      if (m) {
+        entries.push({ dir: m[1].trim(), reason: (m[2] || '').trim() });
+        j += 1;
+        continue;
+      }
+      if (/^\-\s+/.test(l) || /^##\s+/.test(l)) break;
+      j += 1;
+    }
+  }
+  return entries;
+}
+
+function removeExistingUpdatedBlocks(block) {
+  const lines = block.split('\n');
+  const UPDATED_LINE = '- Updated: Auto-generated folder docs';
+  const out = [];
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    if (line.trim() === UPDATED_LINE) {
+      // skip until next top-level bullet or next day header
+      let j = i + 1;
+      while (j < lines.length) {
+        const l = lines[j];
+        if (/^\s{2}-\s+/.test(l)) { j += 1; continue; }
+        if (/^\-\s+/.test(l) || /^##\s+/.test(l)) break;
+        j += 1;
+      }
+      i = j - 1; // loop will ++
+      continue;
+    }
+    out.push(line);
+  }
+  return out.join('\n');
+}
+
+async function normalizeChangelogFile() {
+  const changelogPath = path.join(repoRoot, 'changelog.md');
+  let content = '';
+  try { content = await fsp.readFile(changelogPath, 'utf8'); } catch {}
+  content = ensureChangelogHeader(content);
+  const sections = parseAllDaySections(content);
+  if (sections.length === 0) {
+    await fsp.writeFile(changelogPath, content, 'utf8');
+    console.log('Changelog normalized (no sections found).');
+    return;
+  }
+  let updated = content;
+  // Process from last to first to keep indices valid when slicing
+  for (let idx = sections.length - 1; idx >= 0; idx--) {
+    const { start, end } = sections[idx];
+    const block = updated.slice(start, end);
+    const legacy = extractLegacyUpdatedEntriesFromBlock(block);
+    const existing = extractExistingUpdatedBlockEntries(block);
+    const combined = dedupeEntries([...existing, ...legacy]);
+    if (combined.length === 0) continue;
+    // Remove existing updated blocks and legacy lines
+    let withoutUpdated = removeExistingUpdatedBlocks(block);
+    withoutUpdated = removeLegacyUpdatedLines(withoutUpdated);
+    // Ensure a single merged block after the header line
+    const pieces = withoutUpdated.split('\n');
+    const header = pieces[0];
+    const rest = pieces.slice(1).join('\n').trimStart();
+    const mergedBlock = injectOrMergeUpdatedBlock(header + '\n' + rest, combined);
+    updated = updated.slice(0, start) + mergedBlock + updated.slice(end);
+  }
+  await fsp.writeFile(changelogPath, updated, 'utf8');
+  console.log('Changelog normalized.');
 }
 
 function isPathIgnored(absPath) {
@@ -265,6 +495,12 @@ async function watchAndRun() {
 async function main() {
   const args = new Set(process.argv.slice(2));
   const watch = args.has('--watch');
+  const normalize = args.has('--normalize');
+
+  if (normalize) {
+    await normalizeChangelogFile();
+    return;
+  }
   if (watch) {
     await watchAndRun();
     // keep process alive
