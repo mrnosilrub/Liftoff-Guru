@@ -1,5 +1,5 @@
----
 const { title = "Liftoff.Guru" } = Astro.props;
+import "../styles/globals.css";
 ---
 <html lang="en">
   <head>
@@ -8,7 +8,6 @@ const { title = "Liftoff.Guru" } = Astro.props;
     <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="/src/styles/globals.css" />
   </head>
   <body class="min-h-screen bg-zinc-950 text-zinc-100 antialiased">
     <header class="sticky top-0 z-40 border-b border-zinc-800/60 bg-zinc-950/70 backdrop-blur">
