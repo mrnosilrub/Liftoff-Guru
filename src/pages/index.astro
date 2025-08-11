@@ -5,9 +5,9 @@ const projects = Object.values(modules);
 const featured = projects.slice(0, 3);
 ---
 <Base title="Liftoff.Guru — The Launch Pad">
-  <section class="py-20 text-center">
-    <h1 class="text-5xl font-extrabold tracking-tight">Ideas. Built. Launched.</h1>
-    <p class="mx-auto mt-4 max-w-2xl text-zinc-300">
+  <section class="py-14 md:py-20 text-center container">
+    <h1>Ideas. Built. Launched.</h1>
+    <p class="mx-auto mt-3 md:mt-4 max-w-2xl">
       A product studio shipping experiments, apps, and tools — fast.
     </p>
     <div class="mt-8">
@@ -17,42 +17,42 @@ const featured = projects.slice(0, 3);
     </div>
   </section>
 
-  <section class="mb-12 rounded-2xl border border-zinc-800/60 bg-zinc-900/40 p-6">
+  <section class="mb-10 md:mb-12 section container">
     <div class="aspect-[16/9] w-full rounded-xl bg-gradient-to-r from-fuchsia-600/30 via-indigo-600/30 to-cyan-500/30"></div>
     <p class="mt-3 text-center text-sm text-zinc-400">Highlight reel / montage (placeholder)</p>
   </section>
 
-  <section class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-    <div class="rounded-xl border border-zinc-800/60 bg-zinc-900/40 p-4">
-      <h3 class="font-semibold">Innovation</h3>
-      <p class="text-sm text-zinc-400">Explore new ideas with tight feedback loops.</p>
+  <section class="container grid gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <div class="section">
+      <h3>Innovation</h3>
+      <p>Explore new ideas with tight feedback loops.</p>
     </div>
-    <div class="rounded-xl border border-zinc-800/60 bg-zinc-900/40 p-4">
-      <h3 class="font-semibold">Speed & Execution</h3>
-      <p class="text-sm text-zinc-400">Bias to ship and learn in public.</p>
+    <div class="section">
+      <h3>Speed & Execution</h3>
+      <p>Bias to ship and learn in public.</p>
     </div>
-    <div class="rounded-xl border border-zinc-800/60 bg-zinc-900/40 p-4">
-      <h3 class="font-semibold">Independent Thinking</h3>
-      <p class="text-sm text-zinc-400">Practical tools over hype.</p>
+    <div class="section">
+      <h3>Independent Thinking</h3>
+      <p>Practical tools over hype.</p>
     </div>
-    <div class="rounded-xl border border-zinc-800/60 bg-zinc-900/40 p-4">
-      <h3 class="font-semibold">Iteration & Improvement</h3>
-      <p class="text-sm text-zinc-400">Refine with usage, not guesses.</p>
+    <div class="section">
+      <h3>Iteration & Improvement</h3>
+      <p>Refine with usage, not guesses.</p>
     </div>
   </section>
 
-  <section class="mt-12">
+  <section class="container mt-12">
     <div class="mb-4 flex items-center justify-between">
-      <h2 class="text-xl font-semibold">Featured Projects</h2>
-      <a href="/projects" class="text-sm text-fuchsia-400 hover:text-fuchsia-300">View all</a>
+      <h2>Featured Projects</h2>
+      <a href="/projects" class="text-sm md:text-base text-fuchsia-400 hover:text-fuchsia-300">View all</a>
     </div>
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {featured.map((p) => (
-        <a href={`/projects/${p.frontmatter.slug}`} class="group rounded-xl border border-zinc-800/60 bg-zinc-900/40 p-4 hover:border-zinc-700">
+        <a href={`/projects/${p.frontmatter.slug}`} class="group section">
           <div class="aspect-video rounded-lg bg-zinc-800/60"></div>
-          <h3 class="mt-3 font-semibold group-hover:text-white">{p.frontmatter.title}</h3>
-          <p class="text-sm text-zinc-400">{p.frontmatter.tagline}</p>
-          <span class="mt-2 inline-block rounded-md border border-zinc-700 px-2 py-0.5 text-xs text-zinc-300">
+          <h3 class="mt-3 group-hover:text-white">{p.frontmatter.title}</h3>
+          <p>{p.frontmatter.tagline}</p>
+          <span class="mt-2 inline-block rounded-md border border-zinc-700 px-2 py-0.5 text-xs md:text-sm text-zinc-300">
             {p.frontmatter.status}
           </span>
         </a>
@@ -61,10 +61,10 @@ const featured = projects.slice(0, 3);
     </div>
   </section>
 
-  <section class="mt-16 text-center">
-    <div class="rounded-2xl border border-zinc-800/60 bg-zinc-900/40 p-8">
-      <h3 class="text-2xl font-semibold">Got an idea? Let’s talk.</h3>
-      <p class="mt-2 text-zinc-300">Collaborations, feedback, or something you want to build.</p>
+  <section class="container mt-14 md:mt-16 text-center">
+    <div class="section p-6 md:p-8">
+      <h3>Got an idea? Let’s talk.</h3>
+      <p class="mt-2">Collaborations, feedback, or something you want to build.</p>
       <a href="/collaborate" class="mt-4 inline-block rounded-xl bg-fuchsia-600 px-5 py-3 font-semibold text-white hover:bg-fuchsia-500">
         Contact
       </a>

@@ -3,9 +3,17 @@ import "../styles/globals.css";
 import logoWhite from "../assets/logo-white.svg?url";
 const { title = "Liftoff.Guru" } = Astro.props;
 ---
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+</head>
 <div class="min-h-screen bg-zinc-950 text-zinc-100 antialiased">
   <header class="sticky top-0 z-40 border-b border-zinc-800/60 bg-zinc-950/70 backdrop-blur">
-    <nav class="mx-auto flex max-w-6xl items-center justify-between px-4 py-5">
+    <nav class="mx-auto flex max-w-6xl items-center justify-between px-4 py-6">
       <a href="/" class="flex items-center gap-2 font-semibold tracking-tight">
         <img src={logoWhite} alt="Liftoff.Guru" class="h-6 w-6" />
         <span class="text-[24px] leading-none">Liftoff.Guru</span>
