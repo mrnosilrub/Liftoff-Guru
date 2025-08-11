@@ -8,7 +8,9 @@
     "preview": "astro preview",
     "format": "biome format --write .",
     "lint": "biome check .",
-    "test": "vitest run"
+    "test": "vitest run",
+    "docs:build": "node scripts/update-docs.mjs",
+    "docs:watch": "node scripts/update-docs.mjs --watch"
   },
   "devDependencies": {
     "@astrojs/mdx": "^4.3.3",
