@@ -1,0 +1,61 @@
+---
+import Base from "../../layouts/Base.astro";
+
+export async function getStaticPaths() {
+  const modules = import.meta.glob("../../content/projects/*.mdx");
+  const entries = await Promise.all(
+    Object.entries(modules).map(async ([path, resolver]) => {
+      const mod = await resolver();
+      const { frontmatter, default: Content } = mod;
+      const slug = frontmatter.slug ?? path.split("/").pop().replace(/\.mdx$/, "");
+      return { params: { slug }, props: { frontmatter, Content } };
+    })
+  );
+  return entries;
+}
+
+const { frontmatter, Content } = Astro.props;
+const links = frontmatter.links || {};
+---
+<Base title={`${frontmatter.title} — Liftoff.Guru`}>
+  <article class="py-10">
+    <header class="mb-6">
+      <h1 class="text-4xl font-extrabold tracking-tight">{frontmatter.title}</h1>
+      <p class="mt-2 text-zinc-300">{frontmatter.tagline}</p>
+    </header>
+
+    <section class="mb-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="rounded-lg border border-zinc-800/60 bg-zinc-900/40 p-3">
+        <div class="text-xs text-zinc-400">Launch Date</div>
+        <div class="font-medium">{frontmatter.launchDate || "TBD"}</div>
+      </div>
+      <div class="rounded-lg border border-zinc-800/60 bg-zinc-900/40 p-3">
+        <div class="text-xs text-zinc-400">Type · Status</div>
+        <div class="font-medium">{frontmatter.type} · {frontmatter.status}</div>
+      </div>
+      <div class="rounded-lg border border-zinc-800/60 bg-zinc-900/40 p-3">
+        <div class="text-xs text-zinc-400">Tech Stack</div>
+        <div class="font-medium">{Array.isArray(frontmatter.techStack) ? frontmatter.techStack.join(", ") : frontmatter.techStack}</div>
+      </div>
+      <div class="rounded-lg border border-zinc-800/60 bg-zinc-900/40 p-3">
+        <div class="text-xs text-zinc-400">Links</div>
+        <div class="flex flex-wrap gap-2">
+          {links.live && <a class="text-fuchsia-400 hover:text-fuchsia-300" href={links.live}>Live</a>}
+          {links.demo && <a class="text-fuchsia-400 hover:text-fuchsia-300" href={links.demo}>Demo</a>}
+          {links.repo && <a class="text-fuchsia-400 hover:text-fuchsia-300" href={links.repo}>Repo</a>}
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-8">
+      <div class="aspect-video w-full rounded-xl bg-zinc-800/60"></div>
+      <p class="mt-2 text-sm text-zinc-400">Screenshots / demo video (placeholder)</p>
+    </section>
+
+    <section class="prose prose-invert max-w-none">
+      <Content />
+    </section>
+  </article>
+</Base>
+
+

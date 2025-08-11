@@ -1,0 +1,26 @@
+---
+import Base from "../layouts/Base.astro";
+---
+<Base title="Collaborate — Liftoff.Guru">
+  <section class="py-12">
+    <div class="mx-auto max-w-xl">
+      <h1 class="text-3xl font-bold">Launch Something Together</h1>
+      <p class="mt-2 text-zinc-300">Briefly share your idea and timeline.</p>
+
+      <form class="mt-6 space-y-4" name="collaborate" netlify>
+        <input type="hidden" name="form-name" value="collaborate" />
+        <input required name="name" placeholder="Name" class="w-full rounded-md border border-zinc-800 bg-zinc-900/60 px-3 py-2" />
+        <input required type="email" name="email" placeholder="Email" class="w-full rounded-md border border-zinc-800 bg-zinc-900/60 px-3 py-2" />
+        <textarea required name="summary" rows="5" placeholder="Idea Summary" class="w-full rounded-md border border-zinc-800 bg-zinc-900/60 px-3 py-2"></textarea>
+        <input name="budget" placeholder="Budget/Timeline (optional)" class="w-full rounded-md border border-zinc-800 bg-zinc-900/60 px-3 py-2" />
+        <button class="rounded-lg bg-fuchsia-600 px-4 py-2 font-semibold text-white hover:bg-fuchsia-500">Send</button>
+      </form>
+
+      <div class="mt-6 text-sm text-zinc-400">
+        Or email directly: <a class="text-fuchsia-400 hover:text-fuchsia-300" href="mailto:hello@liftoff.guru">hello@liftoff.guru</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+
