@@ -11,7 +11,8 @@
     "test": "vitest run",
     "docs:build": "node scripts/update-docs.mjs",
     "docs:watch": "node scripts/update-docs.mjs --watch",
-    "docs:normalize": "node scripts/update-docs.mjs --normalize"
+    "docs:normalize": "node scripts/update-docs.mjs --normalize",
+    "icons:rasterize": "node scripts/rasterize-favicon.mjs"
   },
   "devDependencies": {
     "@astrojs/mdx": "^4.3.3",
@@ -25,6 +26,7 @@
   },
   "dependencies": {
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "sharp": "^0.33.5"
   }
 }
