@@ -1,0 +1,79 @@
+{
+  "$ref": "#/definitions/projects",
+  "definitions": {
+    "projects": {
+      "type": "object",
+      "properties": {
+        "slug": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "tagline": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "App",
+            "SaaS",
+            "Content",
+            "Research",
+            "Experiment"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "Launched",
+            "In Progress",
+            "Archived"
+          ]
+        },
+        "launchDate": {
+          "type": "string"
+        },
+        "techStack": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "links": {
+          "type": "object",
+          "properties": {
+            "live": {
+              "type": "string",
+              "format": "uri"
+            },
+            "demo": {
+              "type": "string",
+              "format": "uri"
+            },
+            "repo": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "additionalProperties": false
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

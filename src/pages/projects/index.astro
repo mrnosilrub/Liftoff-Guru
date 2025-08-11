@@ -1,63 +1,27 @@
 ---
 import Base from "../../layouts/Base.astro";
-const modules = import.meta.glob("../../content/projects/*.mdx", { eager: true });
-const projects = Object.values(modules);
-const types = ["App", "SaaS", "Content", "Research", "Experiment"];
-const statuses = ["Launched", "In Progress", "Archived"];
 ---
 <Base title="Projects — Liftoff.Guru">
-  <section class="py-10 container">
-    <h1>All Projects</h1>
-
-    <div class="mt-6 flex flex-wrap gap-3 text-sm md:text-base">
-      <select id="type" class="rounded-md border border-zinc-800 bg-zinc-900/60 px-3 py-2">
-        <option value="">Type: All</option>
-        {types.map((t) => <option value={t}>{t}</option>)}
-      </select>
-      <select id="status" class="rounded-md border border-zinc-800 bg-zinc-900/60 px-3 py-2">
-        <option value="">Status: All</option>
-        {statuses.map((s) => <option value={s}>{s}</option>)}
-      </select>
+  <section class="py-12 container">
+    <h1>Projects</h1>
+    <div class="section mt-4">
+      <p class="text-zinc-300">No public launches yet. We’re actively building. When a project goes live, it’ll appear here.</p>
+      <div class="mt-6 flex flex-wrap items-center gap-4">
+        <a href="/studio-log" class="text-fuchsia-400 hover:text-fuchsia-300">Explore the Studio Log →</a>
+        <a href="/collaborate" class="text-fuchsia-400 hover:text-fuchsia-300">Collaborate →</a>
+      </div>
     </div>
 
-    <div id="grid" class="mt-6 grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {projects.map((p) => (
-        <a
-          href={`/projects/${p.frontmatter.slug}`}
-          class="group section"
-          data-type={p.frontmatter.type}
-          data-status={p.frontmatter.status}
-        >
-          <div class="aspect-video rounded-lg bg-zinc-800/60"></div>
-          <h3 class="mt-3 group-hover:text-white">{p.frontmatter.title}</h3>
-          <p>{p.frontmatter.tagline}</p>
-          <div class="mt-2 flex gap-2">
-            <span class="rounded-md border border-zinc-700 px-2 py-0.5 text-xs md:text-sm text-zinc-300">{p.frontmatter.type}</span>
-            <span class="rounded-md border border-zinc-700 px-2 py-0.5 text-xs md:text-sm text-zinc-300">{p.frontmatter.status}</span>
-          </div>
-        </a>
-      ))}
-      {projects.length === 0 && <p class="text-zinc-400">No projects yet.</p>}
+    <div class="mt-10 section p-6 md:p-8">
+      <h3>Join the launch list</h3>
+      <p class="mt-2 text-zinc-300">Occasional updates when something goes live. No spam.</p>
+      <form class="mt-4 flex flex-col gap-3 sm:flex-row" name="launch-list" netlify>
+        <input type="hidden" name="form-name" value="launch-list" />
+        <input required type="email" name="email" placeholder="Email" class="w-full rounded-md border border-zinc-800 bg-zinc-900/60 px-3 py-2" />
+        <button class="rounded-lg bg-fuchsia-600 px-4 py-2 font-semibold text-white hover:bg-fuchsia-500">Get launch updates</button>
+      </form>
     </div>
   </section>
-
-  <script type="module">
-    const typeSel = document.getElementById('type');
-    const statusSel = document.getElementById('status');
-    const cards = Array.from(document.querySelectorAll('#grid > a'));
-
-    function apply() {
-      const type = typeSel.value;
-      const status = statusSel.value;
-      cards.forEach(c => {
-        const okType = !type || c.dataset.type === type;
-        const okStatus = !status || c.dataset.status === status;
-        c.style.display = okType && okStatus ? '' : 'none';
-      });
-    }
-    typeSel?.addEventListener('change', apply);
-    statusSel?.addEventListener('change', apply);
-  </script>
 </Base>
 
 

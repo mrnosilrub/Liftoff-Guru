@@ -1,74 +1,69 @@
 ---
 import Base from "../layouts/Base.astro";
-const modules = import.meta.glob("../content/projects/*.mdx", { eager: true });
-const projects = Object.values(modules);
-const featured = projects.slice(0, 3);
 ---
 <Base title="Liftoff.Guru — The Launch Pad">
   <section class="py-14 md:py-20 text-center container">
     <h1>Ideas. Built. Launched.</h1>
     <p class="mx-auto mt-3 md:mt-4 max-w-2xl">
-      A product studio shipping experiments, apps, and tools — fast.
+      We build and launch iOS apps, websites, web tools, and development workflows.
     </p>
-    <div class="mt-8">
-      <a href="/projects" class="rounded-xl bg-fuchsia-600 px-5 py-3 font-semibold text-white hover:bg-fuchsia-500">
-        View Projects
+    <div class="mt-8 flex items-center justify-center gap-3">
+      <a href="#launch-list" class="rounded-xl bg-fuchsia-600 px-5 py-3 font-semibold text-white hover:bg-fuchsia-500">
+        Get launch updates
+      </a>
+      <a href="/collaborate" class="rounded-xl border border-fuchsia-600/60 px-5 py-3 font-semibold text-fuchsia-200 hover:bg-fuchsia-600/10">
+        Collaborate
       </a>
     </div>
   </section>
 
-  <section class="mb-10 md:mb-12 section container">
-    <div class="aspect-[16/9] w-full rounded-xl bg-gradient-to-r from-fuchsia-600/30 via-indigo-600/30 to-cyan-500/30"></div>
-    <p class="mt-3 text-center text-sm text-zinc-400">Highlight reel / montage (placeholder)</p>
-  </section>
-
-  <section class="container grid gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-4">
+  <section class="container grid gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-5">
     <div class="section">
-      <h3>Innovation</h3>
-      <p>Explore new ideas with tight feedback loops.</p>
+      <h3>iOS apps & fast prototypes</h3>
     </div>
     <div class="section">
-      <h3>Speed & Execution</h3>
-      <p>Bias to ship and learn in public.</p>
+      <h3>Websites & web apps</h3>
     </div>
     <div class="section">
-      <h3>Independent Thinking</h3>
-      <p>Practical tools over hype.</p>
+      <h3>Internal tools & dashboards</h3>
     </div>
     <div class="section">
-      <h3>Iteration & Improvement</h3>
-      <p>Refine with usage, not guesses.</p>
+      <h3>Dev workflows & automation</h3>
+    </div>
+    <div class="section">
+      <h3>R&D experiments</h3>
     </div>
   </section>
 
-  <section class="container mt-12">
-    <div class="mb-4 flex items-center justify-between">
-      <h2>Featured Projects</h2>
-      <a href="/projects" class="text-sm md:text-base text-fuchsia-400 hover:text-fuchsia-300">View all</a>
+  <section class="container mt-12 grid gap-6 lg:grid-cols-2">
+    <div class="section">
+      <h2>From the workshop</h2>
+      <p class="mt-2 text-zinc-300">Essays, research, and playbooks on building useful software.</p>
+      <a href="/studio-log" class="mt-4 inline-block text-fuchsia-400 hover:text-fuchsia-300">Explore the Studio Log →</a>
     </div>
-    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {featured.map((p) => (
-        <a href={`/projects/${p.frontmatter.slug}`} class="group section">
-          <div class="aspect-video rounded-lg bg-zinc-800/60"></div>
-          <h3 class="mt-3 group-hover:text-white">{p.frontmatter.title}</h3>
-          <p>{p.frontmatter.tagline}</p>
-          <span class="mt-2 inline-block rounded-md border border-zinc-700 px-2 py-0.5 text-xs md:text-sm text-zinc-300">
-            {p.frontmatter.status}
-          </span>
-        </a>
-      ))}
-      {featured.length === 0 && <p class="text-zinc-400">Add a project in src/content/projects/</p>}
+    <div class="section">
+      <h2>About Liftoff.Guru</h2>
+      <p class="mt-2 text-zinc-300">We’re a two‑person product studio pairing R&D and engineering to ship useful things in tight cycles.</p>
+      <a href="/about" class="mt-4 inline-block text-fuchsia-400 hover:text-fuchsia-300">Learn more →</a>
     </div>
   </section>
 
-  <section class="container mt-14 md:mt-16 text-center">
+  <section id="launch-list" class="container mt-14 md:mt-16">
     <div class="section p-6 md:p-8">
-      <h3>Got an idea? Let’s talk.</h3>
-      <p class="mt-2">Collaborations, feedback, or something you want to build.</p>
-      <a href="/collaborate" class="mt-4 inline-block rounded-xl bg-fuchsia-600 px-5 py-3 font-semibold text-white hover:bg-fuchsia-500">
-        Contact
-      </a>
+      <h3>Join the launch list</h3>
+      <p class="mt-2 text-zinc-300">Occasional updates when something goes live. No spam.</p>
+      <form class="mt-4 flex flex-col gap-3 sm:flex-row" name="launch-list" netlify>
+        <input type="hidden" name="form-name" value="launch-list" />
+        <input required type="email" name="email" placeholder="Email" class="w-full rounded-md border border-zinc-800 bg-zinc-900/60 px-3 py-2" />
+        <button class="rounded-lg bg-fuchsia-600 px-4 py-2 font-semibold text-white hover:bg-fuchsia-500">Get launch updates</button>
+      </form>
     </div>
+  </section>
+
+  <section class="container mt-8 md:mt-10 text-center">
+    <a href="/collaborate" class="inline-block rounded-xl bg-fuchsia-600 px-5 py-3 font-semibold text-white hover:bg-fuchsia-500">
+      Start a build partnership
+    </a>
   </section>
 </Base>
 
