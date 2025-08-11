@@ -18,3 +18,4 @@ small { @apply text-sm leading-6 text-zinc-400; }
 
 /* Cards / sections */
 .section { @apply rounded-2xl border border-zinc-800/60 bg-zinc-900/40 p-5 md:p-6; }
+.section.centered { @apply flex items-center justify-center text-center min-h-[120px]; }
