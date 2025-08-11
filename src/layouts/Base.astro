@@ -34,26 +34,26 @@ const { title = "Liftoff.Guru" } = Astro.props;
         </li>
       </ul>
     </nav>
-
-    <!-- Mobile menu (absolute, slides/fades below header) -->
-    <div
-      id="mobile-menu"
-      class="md:hidden absolute left-0 right-0 top-full pointer-events-none overflow-hidden border-b-0 border-zinc-800/60 bg-zinc-950/95 backdrop-blur-sm md:backdrop-blur"
-      aria-hidden="true"
-      style="height:0; opacity:0; transition: height 700ms ease-in-out, opacity 700ms ease-in-out; will-change: height, opacity;"
-    >
-      <div class="mx-auto max-w-6xl px-4 py-4">
-        <ul class="flex flex-col gap-3 text-base text-zinc-200">
-          <li><a class="block rounded-md px-2 py-2 hover:bg-zinc-900/60" href="/projects">Projects</a></li>
-          <li><a class="block rounded-md px-2 py-2 hover:bg-zinc-900/60" href="/about">About</a></li>
-          <li><a class="block rounded-md px-2 py-2 hover:bg-zinc-900/60" href="/blog">Blog</a></li>
-          <li class="pt-2">
-            <a class="inline-flex items-center justify-center rounded-lg bg-fuchsia-600 px-3 py-2 font-medium text-white hover:bg-fuchsia-500" href="/collaborate">Contact</a>
-          </li>
-        </ul>
-      </div>
-    </div>
   </header>
+
+  <!-- Mobile menu (in-flow; pushes content) -->
+  <div
+    id="mobile-menu"
+    class="md:hidden overflow-hidden border-b-0 border-zinc-800/60 bg-zinc-950/95 backdrop-blur-sm md:backdrop-blur"
+    aria-hidden="true"
+    style="height:0; transition: height 700ms ease-in-out; will-change: height;"
+  >
+    <div class="mx-auto max-w-6xl px-4 py-4">
+      <ul class="flex flex-col gap-3 text-base text-zinc-200">
+        <li><a class="block rounded-md px-2 py-2 hover:bg-zinc-900/60" href="/projects">Projects</a></li>
+        <li><a class="block rounded-md px-2 py-2 hover:bg-zinc-900/60" href="/about">About</a></li>
+        <li><a class="block rounded-md px-2 py-2 hover:bg-zinc-900/60" href="/blog">Blog</a></li>
+        <li class="pt-2">
+          <a class="inline-flex items-center justify-center rounded-lg bg-fuchsia-600 px-3 py-2 font-medium text-white hover:bg-fuchsia-500" href="/collaborate">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
 
   <main class="mx-auto max-w-6xl px-4">
     <slot />
@@ -79,13 +79,10 @@ const { title = "Liftoff.Guru" } = Astro.props;
     const openPanel = () => {
       panel.classList.add('border-b');
       panel.classList.remove('border-b-0');
-      panel.classList.add('pointer-events-auto');
-      panel.classList.remove('pointer-events-none');
       panel.setAttribute('aria-hidden', 'false');
       btn.setAttribute('aria-expanded', 'true');
       // Measure and animate height from 0 to content height
       panel.style.height = panel.scrollHeight + 'px';
-      panel.style.opacity = '1';
       const onEnd = (e) => {
         if (e.propertyName === 'height') {
           panel.style.height = 'auto';
@@ -102,9 +99,6 @@ const { title = "Liftoff.Guru" } = Astro.props;
       // Force reflow to ensure transition runs
       void panel.getBoundingClientRect();
       panel.style.height = '0px';
-      panel.style.opacity = '0';
-      panel.classList.add('pointer-events-none');
-      panel.classList.remove('pointer-events-auto');
       panel.classList.add('border-b-0');
       panel.classList.remove('border-b');
       panel.setAttribute('aria-hidden', 'true');
