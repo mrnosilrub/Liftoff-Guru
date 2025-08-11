@@ -22,6 +22,8 @@ All notable changes to this project will be documented in this file.
   - `/src/styles/function.md`: Styles folder overview
 
 ## 2025-08-10
+- Updated docs for `/src/content/projects`: Generated/updated function.md
+- Updated docs for `/src/content/projects`: Generated/updated function.md
 - Updated docs for `/`: Generated/updated function.md
 - Updated docs for `/planning`: Generated/updated function.md
 - Updated docs for `/public`: Generated/updated function.md
