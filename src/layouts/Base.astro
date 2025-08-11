@@ -36,7 +36,7 @@ const { title = "Liftoff.Guru" } = Astro.props;
     </nav>
 
     <!-- Mobile menu (absolute, slides/fades below header) -->
-    <div id="mobile-menu" class="md:hidden absolute left-0 right-0 top-full -translate-y-2 opacity-0 pointer-events-none overflow-hidden border-b-0 border-zinc-800/60 bg-zinc-950/95 backdrop-blur-sm md:backdrop-blur transform-gpu transition-transform transition-opacity duration-500 ease-out" aria-hidden="true">
+    <div id="mobile-menu" class="md:hidden absolute left-0 right-0 top-full -translate-y-4 opacity-0 pointer-events-none overflow-hidden border-b-0 border-zinc-800/60 bg-zinc-950/95 backdrop-blur-sm md:backdrop-blur transform-gpu transition-transform transition-opacity duration-700 ease-in-out" aria-hidden="true" style="will-change: transform, opacity;">
       <div class="mx-auto max-w-6xl px-4 py-4">
         <ul class="flex flex-col gap-3 text-base text-zinc-200">
           <li><a class="block rounded-md px-2 py-2 hover:bg-zinc-900/60" href="/projects">Projects</a></li>
@@ -71,7 +71,7 @@ const { title = "Liftoff.Guru" } = Astro.props;
   const panel = document.getElementById('mobile-menu');
   if (btn && panel) {
     const openClasses = ['translate-y-0', 'opacity-100', 'pointer-events-auto', 'border-b'];
-    const closedClasses = ['-translate-y-2', 'opacity-0', 'pointer-events-none', 'border-b-0'];
+    const closedClasses = ['-translate-y-4', 'opacity-0', 'pointer-events-none', 'border-b-0'];
     const setOpen = (open) => {
       if (open) {
         panel.classList.add(...openClasses);
