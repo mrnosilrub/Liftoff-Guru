@@ -52,10 +52,12 @@ import Base from "../layouts/Base.astro";
     <div class="section p-6 md:p-8">
       <h3>Join the launch list</h3>
       <p class="mt-2 text-zinc-300">Occasional updates when something goes live. No spam.</p>
-      <form class="mt-4 flex flex-col gap-3 sm:flex-row" name="launch-list" netlify>
-        <input type="hidden" name="form-name" value="launch-list" />
+      <form class="mt-4 flex flex-col gap-3 sm:flex-row" method="POST" action="https://formsubmit.co/hello@liftoff.guru">
+        <input type="hidden" name="_subject" value="Launch list signup — Liftoff.Guru" />
+        <input type="hidden" name="_next" value="https://liftoff.guru/thanks" />
+        <input type="hidden" name="_template" value="table" />
         <input required type="email" name="email" placeholder="Email" class="w-full rounded-md border border-zinc-800 bg-zinc-900/60 px-3 py-2" />
-        <button class="rounded-lg bg-fuchsia-600 px-5 py-2 font-semibold text-white hover:bg-fuchsia-500 whitespace-nowrap">Get Updates</button>
+        <button type="submit" class="rounded-lg bg-fuchsia-600 px-5 py-2 font-semibold text-white hover:bg-fuchsia-500 whitespace-nowrap">Get Updates</button>
       </form>
     </div>
   </section>

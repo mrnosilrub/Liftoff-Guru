@@ -7,13 +7,15 @@ import Base from "../layouts/Base.astro";
       <h1 class="text-3xl font-bold">Launch something together</h1>
       <p class="mt-2 text-zinc-300">We partner to scope, build, and ship. Best fit: build partnerships where we own delivery and iterate with you. Budget: case‑by‑case. NDA welcome—mention it in your message.</p>
 
-      <form class="mt-6 space-y-4" name="collaborate" netlify>
-        <input type="hidden" name="form-name" value="collaborate" />
+      <form class="mt-6 space-y-4" method="POST" action="https://formsubmit.co/hello@liftoff.guru">
+        <input type="hidden" name="_subject" value="Collaborate inquiry — Liftoff.Guru" />
+        <input type="hidden" name="_next" value="https://liftoff.guru/thanks" />
+        <input type="hidden" name="_template" value="table" />
         <input required name="name" placeholder="Name" class="w-full rounded-md border border-zinc-800 bg-zinc-900/60 px-3 py-2" />
         <input required type="email" name="email" placeholder="Email" class="w-full rounded-md border border-zinc-800 bg-zinc-900/60 px-3 py-2" />
         <textarea required name="summary" rows="5" placeholder="Idea summary" class="w-full rounded-md border border-zinc-800 bg-zinc-900/60 px-3 py-2"></textarea>
         <input name="timeline" placeholder="Timeline / constraints (optional)" class="w-full rounded-md border border-zinc-800 bg-zinc-900/60 px-3 py-2" />
-        <button class="rounded-lg bg-fuchsia-600 px-4 py-2 font-semibold text-white hover:bg-fuchsia-500">Start a build partnership</button>
+        <button type="submit" class="rounded-lg bg-fuchsia-600 px-4 py-2 font-semibold text-white hover:bg-fuchsia-500">Start a build partnership</button>
       </form>
 
       <div class="mt-6 text-sm text-zinc-400">
