@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 2025-08-14
+- Added: Analytics tracking (Umami) site-wide
+  - `/src/layouts/Base.astro`: Inserted Umami tracker script tag in head
+
 ## 2025-08-11
 - Added: Initial documentation scaffolding
   - `/function.md`: Root overview of files and folders
