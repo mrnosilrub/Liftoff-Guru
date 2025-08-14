@@ -8,10 +8,10 @@ import Base from "../layouts/Base.astro";
       A small studio shipping iOS apps, Dev Tools, and R&D. Join the list for early access and launch notes.
     </p>
     <div class="mt-8 flex items-center justify-center gap-3">
-      <a href="#launch-list" class="rounded-xl bg-fuchsia-600 px-5 py-3 font-semibold text-white hover:bg-fuchsia-500 whitespace-nowrap">
+      <a href="#launch-list" class="rounded-xl bg-fuchsia-600 px-5 py-3 font-semibold text-white hover:bg-fuchsia-500 whitespace-nowrap" data-umami-event="cta_get_updates" data-umami-event-location="home_hero">
         Get Updates
       </a>
-      <a href="/collaborate" class="rounded-xl border border-fuchsia-600/60 px-5 py-3 font-semibold text-fuchsia-200 hover:bg-fuchsia-600/10">
+      <a href="/collaborate" class="rounded-xl border border-fuchsia-600/60 px-5 py-3 font-semibold text-fuchsia-200 hover:bg-fuchsia-600/10" data-umami-event="cta_collaborate" data-umami-event-location="home_hero">
         Collaborate
       </a>
     </div>
@@ -39,12 +39,12 @@ import Base from "../layouts/Base.astro";
     <div class="section">
       <h2>Building in public</h2>
       <p class="mt-2 text-zinc-300">Short notes, experiments, and playbooks as we ship v1s.</p>
-      <a href="/studio-log" class="mt-4 inline-block text-fuchsia-400 hover:text-fuchsia-300">Read the Studio Log →</a>
+      <a href="/studio-log" class="mt-4 inline-block text-fuchsia-400 hover:text-fuchsia-300" data-umami-event="cta_read_studio_log" data-umami-event-location="home_build_public">Read the Studio Log →</a>
     </div>
     <div class="section">
       <h2>About Liftoff.Guru</h2>
       <p class="mt-2 text-zinc-300">Liftoff.Guru is a small studio focused on shipping useful, clear software. We prototype fast, launch early, and iterate in public.</p>
-      <a href="/about" class="mt-4 inline-block text-fuchsia-400 hover:text-fuchsia-300">Learn more →</a>
+      <a href="/about" class="mt-4 inline-block text-fuchsia-400 hover:text-fuchsia-300" data-umami-event="cta_learn_more" data-umami-event-location="home_about">Learn more →</a>
     </div>
   </section>
 
@@ -59,13 +59,13 @@ import Base from "../layouts/Base.astro";
         <input type="hidden" name="_captcha" value="false" />
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
         <input required type="email" name="email" placeholder="Email" class="w-full rounded-md border border-zinc-800 bg-zinc-900/60 px-3 py-2" />
-        <button type="submit" class="rounded-lg bg-fuchsia-600 px-5 py-2 font-semibold text-white hover:bg-fuchsia-500 whitespace-nowrap">Get Updates</button>
+        <button type="submit" class="rounded-lg bg-fuchsia-600 px-5 py-2 font-semibold text-white hover:bg-fuchsia-500 whitespace-nowrap" data-umami-event="cta_submit_launch_list" data-umami-event-location="home_launch_list">Get Updates</button>
       </form>
     </div>
   </section>
 
   <section class="container mt-8 md:mt-10 text-center">
-    <a href="/collaborate" class="inline-block rounded-xl bg-fuchsia-600 px-5 py-3 font-semibold text-white hover:bg-fuchsia-500">
+    <a href="/collaborate" class="inline-block rounded-xl bg-fuchsia-600 px-5 py-3 font-semibold text-white hover:bg-fuchsia-500" data-umami-event="cta_collaborate" data-umami-event-location="home_bottom_cta">
       Start a build partnership
     </a>
   </section>

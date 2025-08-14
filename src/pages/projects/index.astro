@@ -7,8 +7,8 @@ import Base from "../../layouts/Base.astro";
     <div class="section mt-4">
       <p class="text-zinc-300">We’re heads‑down on first releases. Sign up to be notified when things go live.</p>
       <div class="mt-6 flex flex-wrap items-center gap-4">
-        <a href="/studio-log" class="text-fuchsia-400 hover:text-fuchsia-300">Explore the Studio Log →</a>
-        <a href="/collaborate" class="text-fuchsia-400 hover:text-fuchsia-300">Collaborate →</a>
+        <a href="/studio-log" class="text-fuchsia-400 hover:text-fuchsia-300" data-umami-event="cta_read_studio_log" data-umami-event-location="projects_top_links">Explore the Studio Log →</a>
+        <a href="/collaborate" class="text-fuchsia-400 hover:text-fuchsia-300" data-umami-event="cta_collaborate" data-umami-event-location="projects_top_links">Collaborate →</a>
       </div>
     </div>
 
@@ -22,7 +22,7 @@ import Base from "../../layouts/Base.astro";
         <input type="hidden" name="_captcha" value="false" />
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
         <input required type="email" name="email" placeholder="Email" class="w-full rounded-md border border-zinc-800 bg-zinc-900/60 px-3 py-2" />
-        <button type="submit" class="rounded-lg bg-fuchsia-600 px-4 py-2 font-semibold text-white hover:bg-fuchsia-500 whitespace-nowrap">Get Updates</button>
+        <button type="submit" class="rounded-lg bg-fuchsia-600 px-4 py-2 font-semibold text-white hover:bg-fuchsia-500 whitespace-nowrap" data-umami-event="cta_submit_launch_list" data-umami-event-location="projects_launch_list">Get Updates</button>
       </form>
     </div>
   </section>
